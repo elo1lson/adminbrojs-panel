@@ -4,11 +4,20 @@ const PostSchema = new mongoose.Schema({
     type: mongoose.Types.ObjectId,
     ref: "User",
   },
+  _channel_id: {
+    type: String,
+    required: true,
+    ref: "Channel",
+  },
   guild: {
     type: String,
     required: true,
   },
   channel: {
+    type: String,
+    required: true,
+  },
+  channel_name: {
     type: String,
     required: true,
   },

@@ -2,7 +2,7 @@ const Channel = require("../models/Channel");
 const client = require("../discord/client");
 const { ValidationError } = require("admin-bro");
 
-const navbar = {
+const navigation = {
   name: "General",
   icon: "General",
 };
@@ -11,8 +11,9 @@ module.exports = async () => {
   return {
     resource: Channel,
     options: {
-      navbar,
-      //Properties: ['label','guild','role_name'],
+      navigation,
+      listProperties: ["ping_name", "label", "description"],
+      showProperties: ["ping_name", "label", "description", "guild_name"],
       properties: {
         label: {
           isVisible: { edit: false, show: true, list: true },
@@ -62,7 +63,7 @@ module.exports = async () => {
               }
               const guild = channel.guild.name;
               payload = {
-                value : id,
+                value: id,
                 label: nameOfChannel,
                 guild,
                 ping: roleObject.id,
